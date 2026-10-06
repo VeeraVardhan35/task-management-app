@@ -2,7 +2,10 @@
 
 > A fullstack, production-grade Kanban productivity platform engineered for personal workflow and team workload balancing with real-time burnout detection. Built for the **Vibe Coding** assessment.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+🔗 **Live Production Demo**: [https://task-management-app-tan-three.vercel.app/](https://task-management-app-tan-three.vercel.app/)  
+📡 **API Health Endpoint**: [https://task-management-app-tan-three.vercel.app/api/health](https://task-management-app-tan-three.vercel.app/api/health)
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel%20Active-brightgreen?style=for-the-badge&logo=vercel)](https://task-management-app-tan-three.vercel.app/)
 ![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)
 ![React](https://img.shields.io/badge/React-19-blue.svg)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon.tech-0284c7.svg)
@@ -13,6 +16,9 @@
 ## 🌟 Live Demo & Architecture Highlights
 
 TaskFlow combines a modern, drag-and-drop Kanban interface with a relational PostgreSQL backend. It features **Workload Balancing ("The Vibe Check")**, which actively monitors tasks per team member and triggers automated burnout alerts.
+
+- **Live Application**: [https://task-management-app-tan-three.vercel.app/](https://task-management-app-tan-three.vercel.app/)
+- **Backend API**: [https://task-management-app-tan-three.vercel.app/api/health](https://task-management-app-tan-three.vercel.app/api/health)
 
 ### ✨ Key Features
 
