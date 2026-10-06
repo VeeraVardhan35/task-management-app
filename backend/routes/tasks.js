@@ -165,18 +165,41 @@ router.delete('/:id', async (req, res) => {
 });
 
 // GET workload info: count of "inprogress" tasks per user (for Vibe Check)
+// Shows only project members when project_id is given; global otherwise.
 router.get('/workload/users', async (req, res) => {
   try {
     const { project_id } = req.query;
-    let query = `
-      SELECT u.id, u.name, u.avatar_color, COUNT(t.id) AS inprogress_count
-      FROM users u
-      LEFT JOIN tasks t ON t.assigned_to = u.id AND t.status = 'inprogress'
-      ${project_id ? 'AND t.project_id = $1' : ''}
-      GROUP BY u.id, u.name, u.avatar_color
-      ORDER BY inprogress_count DESC
-    `;
-    const values = project_id ? [project_id] : [];
+    let query;
+    let values;
+
+    if (project_id) {
+      // Only show members of this project; count their in-progress tasks in this project
+      query = `
+        SELECT u.id, u.name, u.avatar_color,
+               COUNT(t.id) AS inprogress_count
+        FROM users u
+        INNER JOIN project_members pm ON pm.user_id = u.id AND pm.project_id = $1
+        LEFT JOIN tasks t
+          ON t.assigned_to = u.id
+          AND t.status = 'inprogress'
+          AND t.project_id = $1
+        GROUP BY u.id, u.name, u.avatar_color
+        ORDER BY inprogress_count DESC, u.name ASC
+      `;
+      values = [project_id];
+    } else {
+      // Global view: all users
+      query = `
+        SELECT u.id, u.name, u.avatar_color,
+               COUNT(t.id) AS inprogress_count
+        FROM users u
+        LEFT JOIN tasks t ON t.assigned_to = u.id AND t.status = 'inprogress'
+        GROUP BY u.id, u.name, u.avatar_color
+        ORDER BY inprogress_count DESC, u.name ASC
+      `;
+      values = [];
+    }
+
     const result = await pool.query(query, values);
     res.json(result.rows);
   } catch (err) {
