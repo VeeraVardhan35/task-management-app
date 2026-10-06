@@ -1,55 +1,49 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <defs>
-    <!-- Background Gradient -->
-    <radialGradient id="bgGlow" cx="50%" cy="50%" r="65%" fx="35%" fy="30%">
+    <radialGradient id="appLogoGlow" cx="50%" cy="50%" r="65%" fx="35%" fy="30%">
       <stop offset="0%" stop-color="#1e1b4b" stop-opacity="0.9" />
       <stop offset="60%" stop-color="#0f172a" stop-opacity="1" />
       <stop offset="100%" stop-color="#030712" stop-opacity="1" />
     </radialGradient>
 
-    <!-- Linear Gradients for Prism Facets -->
-    <linearGradient id="facetTop" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="appFacetTop" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38BDF8" />
       <stop offset="50%" stop-color="#0284C7" />
       <stop offset="100%" stop-color="#2563EB" />
     </linearGradient>
 
-    <linearGradient id="facetRight" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="appFacetRight" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#C084FC" />
       <stop offset="50%" stop-color="#8B5CF6" />
       <stop offset="100%" stop-color="#6366F1" />
     </linearGradient>
 
-    <linearGradient id="facetLeft" x1="0%" y1="100%" x2="100%" y2="0%">
+    <linearGradient id="appFacetLeft" x1="0%" y1="100%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#F43F5E" />
       <stop offset="50%" stop-color="#E11D48" />
       <stop offset="100%" stop-color="#FB7185" />
     </linearGradient>
 
-    <!-- Core Energy Gradient -->
-    <linearGradient id="coreGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="appCoreGlow" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FFFFFF" />
       <stop offset="40%" stop-color="#38BDF8" />
       <stop offset="100%" stop-color="#818CF8" />
     </linearGradient>
 
-    <!-- Border Ring Gradient -->
-    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="appRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.9" />
       <stop offset="35%" stop-color="#818CF8" stop-opacity="0.4" />
       <stop offset="70%" stop-color="#C084FC" stop-opacity="0.9" />
       <stop offset="100%" stop-color="#F43F5E" stop-opacity="0.6" />
     </linearGradient>
 
-    <!-- Soft Glow Filter -->
-    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+    <filter id="appSoftGlow" x="-30%" y="-30%" width="160%" height="160%">
       <feGaussianBlur stdDeviation="3.5" result="blur" />
       <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
 
-    <!-- Core Bloom Filter -->
-    <filter id="coreBloom" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="4.5" result="blur1" />
+    <filter id="appCoreBloom" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur1" />
       <feGaussianBlur stdDeviation="1.5" result="blur2" />
       <feMerge>
         <feMergeNode in="blur1" />
@@ -59,64 +53,52 @@
     </filter>
   </defs>
 
-  <!-- Base Rounded Hex Shield Container -->
-  <rect x="6" y="6" width="116" height="116" rx="28" fill="url(#bgGlow)" stroke="url(#ringGrad)" stroke-width="2.5" />
+  <rect x="6" y="6" width="116" height="116" rx="28" fill="url(#appLogoGlow)" stroke="url(#appRingGrad)" stroke-width="2.5" />
 
-  <!-- Ambient Light Orbs -->
-  <circle cx="44" cy="40" r="24" fill="#38BDF8" opacity="0.18" filter="url(#softGlow)" />
-  <circle cx="84" cy="80" r="24" fill="#C084FC" opacity="0.18" filter="url(#softGlow)" />
+  <circle cx="44" cy="40" r="24" fill="#38BDF8" opacity="0.18" filter="url(#appSoftGlow)" />
+  <circle cx="84" cy="80" r="24" fill="#C084FC" opacity="0.18" filter="url(#appSoftGlow)" />
 
-  <!-- Isometric Interlocking Chrono-Prism (Rare Geometrical Glyph) -->
-  <!-- Facet 1: Top Wing -->
   <path d="M64 26 L94 43 L64 61 L34 43 Z"
-        fill="url(#facetTop)"
+        fill="url(#appFacetTop)"
         stroke="#7DD3FC"
         stroke-width="1.2"
         stroke-linejoin="round" />
 
-  <!-- Highlight Sheen on Top Facet -->
   <path d="M64 29 L88 43 L64 57 L40 43 Z"
         fill="#FFFFFF"
         opacity="0.18" />
 
-  <!-- Facet 2: Right Wing -->
   <path d="M64 61 L94 43 L94 79 L64 97 Z"
-        fill="url(#facetRight)"
+        fill="url(#appFacetRight)"
         stroke="#D8B4FE"
         stroke-width="1.2"
         stroke-linejoin="round" />
 
-  <!-- Highlight Sheen on Right Facet -->
   <path d="M67 63 L91 49 L91 77 L67 92 Z"
         fill="#FFFFFF"
         opacity="0.1" />
 
-  <!-- Facet 3: Left Wing -->
   <path d="M64 61 L64 97 L34 79 L34 43 Z"
-        fill="url(#facetLeft)"
+        fill="url(#appFacetLeft)"
         stroke="#FDA4AF"
         stroke-width="1.2"
         stroke-linejoin="round" />
 
-  <!-- Dynamic Energy Orbit Rings -->
   <ellipse cx="64" cy="62" rx="44" ry="18"
            fill="none"
-           stroke="url(#ringGrad)"
+           stroke="url(#appRingGrad)"
            stroke-width="1.2"
            stroke-dasharray="8 6 18 6"
            transform="rotate(-25 64 62)"
            opacity="0.5" />
 
-  <!-- Central Nexus Singularity (The Glowing Pulse Core) -->
   <polygon points="64,52 72,61 64,70 56,61"
-           fill="url(#coreGlow)"
-           filter="url(#coreBloom)" />
+           fill="url(#appCoreGlow)"
+           filter="url(#appCoreBloom)" />
 
-  <!-- Internal Core Specular Point -->
   <circle cx="64" cy="61" r="2.2" fill="#FFFFFF" />
 
-  <!-- Orbit Sparks (Rare Floating Micro Nodes) -->
-  <circle cx="98" cy="45" r="2" fill="#38BDF8" opacity="0.9" filter="url(#softGlow)" />
-  <circle cx="30" cy="77" r="1.8" fill="#F43F5E" opacity="0.85" filter="url(#softGlow)" />
-  <circle cx="78" cy="99" r="1.8" fill="#C084FC" opacity="0.85" filter="url(#softGlow)" />
+  <circle cx="98" cy="45" r="2" fill="#38BDF8" opacity="0.9" filter="url(#appSoftGlow)" />
+  <circle cx="30" cy="77" r="1.8" fill="#F43F5E" opacity="0.85" filter="url(#appSoftGlow)" />
+  <circle cx="78" cy="99" r="1.8" fill="#C084FC" opacity="0.85" filter="url(#appSoftGlow)" />
 </svg>
