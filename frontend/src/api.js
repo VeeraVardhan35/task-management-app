@@ -1,10 +1,17 @@
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:5000/api';
+// Production & local adaptive API base URL:
+// - On unified Vercel deployment: relative '/api' works on same origin with zero CORS issues!
+// - If VITE_API_URL is specified (e.g., separate frontend/backend hosting): uses VITE_API_URL
+// - In local Vite dev: defaults to http://localhost:5000/api
+const API_BASE =
+  import.meta.env.VITE_API_URL ||
+  (import.meta.env.DEV ? 'http://localhost:5000/api' : '/api');
 
 const api = axios.create({
   baseURL: API_BASE,
   headers: { 'Content-Type': 'application/json' },
+  withCredentials: true,
 });
 
 // ─── Tasks ────────────────────────────────────────────────────────────────────
